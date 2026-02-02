@@ -5,6 +5,14 @@ remote_theme: just-the-docs/just-the-docs
 url: https://niwanowa.github.io
 baseurl: /clawd-research-to-niwanowa
 
+# ビルド対象から除外
+exclude:
+  - templates/
+  - RESEARCH-GUIDE.md
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
 # ナビゲーション設定
 nav_sort: case_insensitive
 
