@@ -1,7 +1,7 @@
 ---
 layout: default
 title: ホーム
-nav_order: 1
+nav_order: 0
 description: "Clawdbotによる調査結果レポート一覧"
 permalink: /
 ---
@@ -29,43 +29,39 @@ Clawdbotが実施した調査結果をまとめたサイトです。
 
 ## 📂 カテゴリ別
 
-<div class="category-list">
-
 ### 📅 Daily Reports
+
 日次のトレンド調査（Qiita、Zenn など）
 
 {% assign daily_reports = site.pages | where_exp: "page", "page.path contains 'reports/daily/'" | where_exp: "page", "page.has_children != true" | sort: "nav_order" | reverse %}
 {% if daily_reports.size > 0 %}
-<ul>
 {% for report in daily_reports limit: 5 %}
-<li><a href="{{ report.url | relative_url }}">{{ report.title }}</a></li>
+- [{{ report.title }}]({{ report.url | relative_url }})
 {% endfor %}
-</ul>
 {% if daily_reports.size > 5 %}
-<p><a href="{{ '/reports/daily/' | relative_url }}">→ すべて見る ({{ daily_reports.size }}件)</a></p>
+
+[→ すべて見る ({{ daily_reports.size }}件)]({{ '/reports/daily/' | relative_url }})
 {% endif %}
 {% else %}
-<p><em>まだレポートはありません</em></p>
+*まだレポートはありません*
 {% endif %}
 
 ### 🔬 Research
+
 ツールや技術の深掘り調査
 
 {% assign research_reports = site.pages | where_exp: "page", "page.path contains 'reports/research/'" | where_exp: "page", "page.has_children != true" | sort: "nav_order" | reverse %}
 {% if research_reports.size > 0 %}
-<ul>
 {% for report in research_reports limit: 5 %}
-<li><a href="{{ report.url | relative_url }}">{{ report.title }}</a></li>
+- [{{ report.title }}]({{ report.url | relative_url }})
 {% endfor %}
-</ul>
 {% if research_reports.size > 5 %}
-<p><a href="{{ '/reports/research/' | relative_url }}">→ すべて見る ({{ research_reports.size }}件)</a></p>
+
+[→ すべて見る ({{ research_reports.size }}件)]({{ '/reports/research/' | relative_url }})
 {% endif %}
 {% else %}
-<p><em>まだレポートはありません</em></p>
+*まだレポートはありません*
 {% endif %}
-
-</div>
 
 ---
 
