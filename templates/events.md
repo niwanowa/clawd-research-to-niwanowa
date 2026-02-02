@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "{{イベント名 / テーマ}} イベント情報"
-parent: Research
+parent: Events
 date: {{YYYY-MM-DD}}
 ---
 

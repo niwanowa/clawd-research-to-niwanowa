@@ -63,6 +63,57 @@ Clawdbotが実施した調査結果をまとめたサイトです。
 *まだレポートはありません*
 {% endif %}
 
+### 📈 Tech Trends
+
+定期的なトレンド調査
+
+{% assign tech_reports = site.pages | where_exp: "page", "page.path contains 'reports/tech-trends/'" | where_exp: "page", "page.has_children != true" | where_exp: "page", "page.date != nil" | sort: "date" | reverse %}
+{% if tech_reports.size > 0 %}
+{% for report in tech_reports limit: 5 %}
+- [{{ report.title }}]({{ report.url | relative_url }})
+{% endfor %}
+{% if tech_reports.size > 5 %}
+
+[→ すべて見る ({{ tech_reports.size }}件)]({{ '/reports/tech-trends/' | relative_url }})
+{% endif %}
+{% else %}
+*まだレポートはありません*
+{% endif %}
+
+### 🍽️ Gourmet
+
+グルメ情報
+
+{% assign gourmet_reports = site.pages | where_exp: "page", "page.path contains 'reports/gourmet/'" | where_exp: "page", "page.has_children != true" | where_exp: "page", "page.date != nil" | sort: "date" | reverse %}
+{% if gourmet_reports.size > 0 %}
+{% for report in gourmet_reports limit: 5 %}
+- [{{ report.title }}]({{ report.url | relative_url }})
+{% endfor %}
+{% if gourmet_reports.size > 5 %}
+
+[→ すべて見る ({{ gourmet_reports.size }}件)]({{ '/reports/gourmet/' | relative_url }})
+{% endif %}
+{% else %}
+*まだレポートはありません*
+{% endif %}
+
+### 🎪 Events
+
+イベント情報
+
+{% assign events_reports = site.pages | where_exp: "page", "page.path contains 'reports/events/'" | where_exp: "page", "page.has_children != true" | where_exp: "page", "page.date != nil" | sort: "date" | reverse %}
+{% if events_reports.size > 0 %}
+{% for report in events_reports limit: 5 %}
+- [{{ report.title }}]({{ report.url | relative_url }})
+{% endfor %}
+{% if events_reports.size > 5 %}
+
+[→ すべて見る ({{ events_reports.size }}件)]({{ '/reports/events/' | relative_url }})
+{% endif %}
+{% else %}
+*まだレポートはありません*
+{% endif %}
+
 ---
 
 ## このサイトについて

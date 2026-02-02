@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "{{タイトル}}"
-parent: Research
+parent: Tech Trends
 date: {{YYYY-MM-DD}}
 ---
 

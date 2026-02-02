@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "{{店名 / エリア名}} グルメ情報"
-parent: Research
+parent: Gourmet
 date: {{YYYY-MM-DD}}
 ---
 
