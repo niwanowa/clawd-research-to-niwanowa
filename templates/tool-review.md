@@ -1,3 +1,10 @@
+---
+layout: default
+title: "{{ツール名}} レビュー"
+nav_order: {{YYYYMMDD}}
+parent: Research
+---
+
 # {{ツール名}} レビュー
 
 **調査日:** {{YYYY-MM-DD}}  
