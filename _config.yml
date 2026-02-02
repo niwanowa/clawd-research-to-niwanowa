@@ -1,6 +1,6 @@
 title: Clawd Research
 description: Clawdbotによる調査結果レポート
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 
 url: https://niwanowa.github.io
 baseurl: /clawd-research-to-niwanowa
