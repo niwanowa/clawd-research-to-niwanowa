@@ -1,3 +1,10 @@
+---
+layout: default
+title: 2026-02-02 Qiita / Zenn トレンド調査
+parent: Daily Reports
+nav_order: 20260202
+---
+
 # 2026-02-02 Qiita / Zenn トレンド調査
 
 **調査日:** 2026-02-02  
