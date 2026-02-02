@@ -1,6 +1,7 @@
 ---
+layout: default
 title: "Conductor レビュー"
-nav_order: 3
+nav_order: 20260202
 parent: Research
 ---
 
