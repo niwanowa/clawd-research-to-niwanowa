@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Conductor レビュー"
-nav_order: 20260202
 parent: Research
+date: 2026-02-02
 ---
 
 # Conductor レビュー

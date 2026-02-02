@@ -1,3 +1,10 @@
+---
+layout: default
+title: "{{店名 / エリア名}} グルメ情報"
+parent: Research
+date: {{YYYY-MM-DD}}
+---
+
 # {{店名 / エリア名}} グルメ情報
 
 **調査日:** {{YYYY-MM-DD}}  

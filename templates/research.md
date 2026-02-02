@@ -1,3 +1,10 @@
+---
+layout: default
+title: "{{タイトル}}"
+parent: Research
+date: {{YYYY-MM-DD}}
+---
+
 # {{タイトル}}
 
 **調査日:** {{YYYY-MM-DD}}  

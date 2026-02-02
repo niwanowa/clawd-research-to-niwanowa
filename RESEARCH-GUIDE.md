@@ -28,6 +28,21 @@ templates/           # 各調査タイプのテンプレート
 - `2026-02-02-claude-api-deep-dive.md`
 - `2026-02-02-shibuya-lunch.md`
 
+## 📄 Front Matter
+
+各レポートには以下のfront matterを必ず含める：
+
+```yaml
+---
+layout: default
+title: "レポートタイトル"
+parent: Daily Reports  # または Research
+date: YYYY-MM-DD       # 調査日（日付でソートに使用）
+---
+```
+
+**重要:** `date` フィールドは一覧表示のソートと日付表示に使用される。`nav_order` は不要。
+
 ## 🔄 調査ワークフロー
 
 調査依頼を受けたら、以下の手順で実行する：

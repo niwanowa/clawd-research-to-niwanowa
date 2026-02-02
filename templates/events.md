@@ -1,3 +1,10 @@
+---
+layout: default
+title: "{{イベント名 / テーマ}} イベント情報"
+parent: Research
+date: {{YYYY-MM-DD}}
+---
+
 # {{イベント名 / テーマ}} イベント情報
 
 **調査日:** {{YYYY-MM-DD}}  

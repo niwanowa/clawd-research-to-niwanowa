@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "{{ツール名}} レビュー"
-nav_order: {{YYYYMMDD}}
 parent: Research
+date: {{YYYY-MM-DD}}
 ---
 
 # {{ツール名}} レビュー

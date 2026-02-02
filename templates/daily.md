@@ -1,3 +1,10 @@
+---
+layout: default
+title: "{{YYYY-MM-DD}} デイリーレポート"
+parent: Daily Reports
+date: {{YYYY-MM-DD}}
+---
+
 # {{YYYY-MM-DD}} デイリーレポート
 
 **調査タイプ:** Daily  
