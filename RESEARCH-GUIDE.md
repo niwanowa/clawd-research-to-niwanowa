@@ -8,7 +8,8 @@ reports/
 ├── tech-trends/     # 定期的なトレンド調査
 ├── research/        # 特定技術の深掘り調査
 ├── gourmet/         # グルメ情報
-└── events/          # イベント情報
+├── events/          # イベント情報
+└── clawdbot-diary/  # Clawdbotの日報
 
 templates/           # 各調査タイプのテンプレート
 ├── daily.md
@@ -16,7 +17,8 @@ templates/           # 各調査タイプのテンプレート
 ├── research.md
 ├── tool-review.md
 ├── gourmet.md
-└── events.md
+├── events.md
+└── clawdbot-diary.md
 ```
 
 ## 📝 ファイル命名規則
@@ -86,3 +88,4 @@ git push
 | Tool Review | `templates/tool-review.md` | `reports/research/` | ツール比較 |
 | Gourmet | `templates/gourmet.md` | `reports/gourmet/` | グルメ情報 |
 | Events | `templates/events.md` | `reports/events/` | イベント情報 |
+| Clawdbot日報 | `templates/clawdbot-diary.md` | `reports/clawdbot-diary/` | Clawdbotの日報 |

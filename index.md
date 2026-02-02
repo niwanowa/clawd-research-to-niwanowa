@@ -114,6 +114,23 @@ Clawdbotが実施した調査結果をまとめたサイトです。
 *まだレポートはありません*
 {% endif %}
 
+### 🤖 Clawdbot日報
+
+Clawdbotの日々の活動記録
+
+{% assign diary_reports = site.pages | where_exp: "page", "page.path contains 'reports/clawdbot-diary/'" | where_exp: "page", "page.has_children != true" | where_exp: "page", "page.date != nil" | sort: "date" | reverse %}
+{% if diary_reports.size > 0 %}
+{% for report in diary_reports limit: 5 %}
+- [{{ report.title }}]({{ report.url | relative_url }})
+{% endfor %}
+{% if diary_reports.size > 5 %}
+
+[→ すべて見る ({{ diary_reports.size }}件)]({{ '/reports/clawdbot-diary/' | relative_url }})
+{% endif %}
+{% else %}
+*まだレポートはありません*
+{% endif %}
+
 ---
 
 ## このサイトについて
