@@ -131,6 +131,23 @@ Clawdbotの日々の活動記録
 *まだレポートはありません*
 {% endif %}
 
+### 📄 ドキュメント・翻訳
+
+技術ドキュメントの翻訳やリファレンス資料
+
+{% assign docs_reports = site.pages | where_exp: "page", "page.path contains 'reports/docs/'" | where_exp: "page", "page.has_children != true" | where_exp: "page", "page.date != nil" | sort: "date" | reverse %}
+{% if docs_reports.size > 0 %}
+{% for report in docs_reports limit: 5 %}
+- [{{ report.title }}]({{ report.url | relative_url }})
+{% endfor %}
+{% if docs_reports.size > 5 %}
+
+[→ すべて見る ({{ docs_reports.size }}件)]({{ '/reports/docs/' | relative_url }})
+{% endif %}
+{% else %}
+*まだレポートはありません*
+{% endif %}
+
 ---
 
 ## このサイトについて
