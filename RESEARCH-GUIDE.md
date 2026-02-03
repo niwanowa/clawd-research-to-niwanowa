@@ -76,9 +76,15 @@ git commit -m "📝 Add report: YYYY-MM-DD-タイトル"
 git push
 ```
 
-### Step 5: 表示確認
-- GitHub上でページが正しく表示されることを確認
-- リンク切れ・フォーマット崩れがないかチェック
+### Step 5: GitHub Actionsの完了確認
+- プッシュ後、GitHub Actionsのワークフローが正常に完了するのを待つ
+- `gh run list` またはGitHub Actionsタブでステータスを確認
+- エラーがないことを確認
+
+### Step 6: GitHub Pages上でページの確認
+- GitHub Pages（https://niwanowa.github.io/clawd-research-to-niwanowa/）にアクセス
+- 追加したページが正しく表示されることを確認
+- フォーマット、リンク、画像などに問題がないかチェック
 
 ## 📋 テンプレート一覧
 
