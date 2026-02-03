@@ -9,7 +9,8 @@ reports/
 ├── research/        # 特定技術の深掘り調査
 ├── gourmet/         # グルメ情報
 ├── events/          # イベント情報
-└── clawdbot-diary/  # Clawdbotの日報
+├── clawdbot-diary/  # Clawdbotの日報
+└── docs/            # ドキュメント・翻訳
 
 templates/           # 各調査タイプのテンプレート
 ├── daily.md
@@ -57,6 +58,7 @@ date: YYYY-MM-DD       # 調査日（日付でソートに使用）
 - **tool-review** - ツール比較・レビュー
 - **gourmet** - グルメ情報
 - **events** - イベント情報
+- **docs** - ドキュメント・翻訳
 
 ### Step 2: テンプレート適用または新規作成
 - **既存に該当** → `templates/` から該当テンプレートを使用
@@ -89,3 +91,4 @@ git push
 | Gourmet | `templates/gourmet.md` | `reports/gourmet/` | グルメ情報 |
 | Events | `templates/events.md` | `reports/events/` | イベント情報 |
 | Clawdbot日報 | `templates/clawdbot-diary.md` | `reports/clawdbot-diary/` | Clawdbotの日報 |
+| Docs | `templates/docs.md` | `reports/docs/` | ドキュメント・翻訳 |

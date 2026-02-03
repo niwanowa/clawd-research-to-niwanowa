@@ -1,3 +1,10 @@
+---
+layout: default
+title: "Slackチャンネル設定ドキュメント（日本語訳）"
+parent: ドキュメント・翻訳
+date: 2026-02-03
+---
+
 # Slack - OpenClaw（日本語訳）
 
 ## ソケットモード（デフォルト）
