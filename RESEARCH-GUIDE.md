@@ -86,6 +86,11 @@ git push
 - 追加したページが正しく表示されることを確認
 - フォーマット、リンク、画像などに問題がないかチェック
 
+### Step 7: SlackでURL共有（日報の場合のみ）
+- 日報の場合、Slackチャンネル `#clawdbotとの対話` (C0ABC66S869) でURLを共有
+- 共有メッセージ例：「日報を更新しました 📝 {URL}」
+- URL構造例: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/clawdbot-diary/YYYY-MM-DD-タイトル/`
+
 ## 📋 テンプレート一覧
 
 | タイプ | テンプレート | 保存先 | 用途 |
