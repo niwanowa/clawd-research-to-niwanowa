@@ -89,7 +89,12 @@ git push
 ### Step 7: SlackでURL共有（日報の場合のみ）
 - 日報の場合、Slackチャンネル `#clawdbotとの対話` (C0ABC66S869) でURLを共有
 - 共有メッセージ例：「日報を更新しました 📝 {URL}」
-- URL構造例: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/clawdbot-diary/YYYY-MM-DD-タイトル/`
+- **正しいURL構造:** `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/YYYY-MM-DD-タイトル.html`
+  - `{category}` は `daily`, `research`, `clawdbot-diary` など
+  - **重要:** 末尾は `.html` 拡張子。`/` で終わるURLは404になります！
+- 例:
+  - Daily: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/daily/2026-02-05-zenn-trend.html`
+  - 日報: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/clawdbot-diary/2026-02-05-clawdbot-diary.html`
 
 ## 📋 テンプレート一覧
 

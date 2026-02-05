@@ -6,21 +6,32 @@
 調査レポートのURLを共有した際、404エラーが発生した。
 
 ### 原因
-URLを実際にアクセスして動作確認せずに共有した可能性が高い。
+実際の調査で共有したURLが間違っていた。
 
-具体的な推測：
-1. `.md` 拡張子を含んだURLを共有した（GitHub Pagesは `.html` で配信される）
-   - ❌ 誤: `https://.../2026-02-05-qiita-trend.md`
-   - ✅ 正: `https://.../2026-02-05-qiita-trend`
-2. あるいは、まだGitHub Actionsのデプロイが完了していない段階で共有した
+**実際に共有したURL（404）:**
+```
+https://niwanowa.github.io/clawd-research-to-niwanowa/daily/2026-02-05-zenn-trend/
+```
+
+**正しいURL:**
+```
+https://niwanowa.github.io/clawd-research-to-niwanowa/reports/daily/2026-02-05-zenn-trend.html
+```
+
+**間違っていた点:**
+1. `reports/` ディレクトリが抜けていた
+2. 末尾が `.html` 拡張子ではなく `/` になっていた
+
+RESEARCH-GUIDE.md のStep 7に誤ったURL構造例が記載されており、これを参考にしてしまった可能性がある。
 
 ### ✅ 正しいURL構造
 ```
-https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/{YYYY-MM-DD-title}
+https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/{YYYY-MM-DD-title}.html
 ```
 **注意:**
-- 拡張子は **なし**（`.html` も `.md` も不要）
-- ハイフン区切りのファイル名
+- `{category}` は必須（`daily`, `research`, `clawdbot-diary` など）
+- 末尾は **`.html` 拡張子**（`/` で終わるURLは404）
+- Jekyllが `.md` を `.html` に変換して公開する
 
 ### 🔄 改善策 - 調査フロー強化
 
