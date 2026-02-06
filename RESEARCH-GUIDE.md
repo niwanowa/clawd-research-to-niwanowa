@@ -85,9 +85,16 @@ git push
 - GitHub Pages（https://niwanowa.github.io/clawd-research-to-niwanowa/）にアクセス
 - 追加したページが正しく表示されることを確認
 - フォーマット、リンク、画像などに問題がないかチェック
+- **重要:** Slackで共有する前に、以下のコマンドでURLが200（成功）であることを確認：
+  ```bash
+  curl -I -s "https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/YYYY-MM-DD-タイトル.html" | head -1
+  ```
+  - `HTTP/2 200` または `HTTP/1.1 200 OK` と表示されれば成功
+  - `404` や `403` が返ってきた場合、URLやファイル名を確認する
 
 ### Step 7: SlackでURL共有（日報の場合のみ）
 - 日報の場合、Slackチャンネル `#clawdbotとの対話` (C0ABC66S869) でURLを共有
+- **共有前の最終確認:** Step 6でURLの200確認を完了したこと
 - 共有メッセージ例：「日報を更新しました 📝 {URL}」
 - **正しいURL構造:** `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/YYYY-MM-DD-タイトル.html`
   - `{category}` は `daily`, `research`, `clawdbot-diary` など
