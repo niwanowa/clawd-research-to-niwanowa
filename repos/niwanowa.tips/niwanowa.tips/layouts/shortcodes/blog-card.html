@@ -1,0 +1,59 @@
+{{- $url := (.Get 0) -}}
+{{- $remoteTry := try (resources.GetRemote $url) -}}
+{{- if $remoteTry.Err -}}
+    {{- warnf "%s" $remoteTry.Err -}}
+{{- else -}}
+    {{- $result := $remoteTry.Value -}}
+    {{- $title := "" -}}
+    {{- $description := "" -}}
+    {{- $image := "" -}}
+    {{- with $head := index (findRE `<head>(.|\n)*?</head>` $result.Content) 0 -}}
+        {{- range $meta := findRE `<meta.*?>` $head -}}
+            {{- $name := replaceRE `<.*name=\"(.*?)\".*>` "$1" $meta -}}
+            {{- $property := replaceRE `<.*property=\"(.*?)\".*>` "$1" $meta -}}
+            {{- $content := replaceRE `<.*content=\"(.*?)\".*>` "$1" $meta -}}
+            {{- if eq $property "og:title" -}}
+                {{- $title = $content -}}
+            {{- else if eq $property "og:description" -}}
+                {{- $description = $content -}}
+            {{- else if eq $property "og:image" -}}
+                {{- $image = $content -}}
+            {{- end -}}
+            {{- if and (eq $description "") (eq $name "description") -}}
+                {{- $description = $content -}}
+            {{- end -}}
+        {{- end -}}
+        {{- if eq $title "" -}}
+            {{- with index (findRE `<title>(.*?)</title>` $head) 0 -}}
+                {{- $title = replaceRE `<title>(.*?)</title>` "$1" . -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $thumbnail_url := "" -}}
+    {{- with $image -}}
+        {{- $thumbTry := try (resources.GetRemote $image) -}}
+        {{- if $thumbTry.Err -}}
+            {{- warnf "%s" $thumbTry.Err -}}
+        {{- else -}}
+            {{- $thumbnail := $thumbTry.Value -}}
+            {{- $thumbnail_url = $thumbnail.RelPermalink -}}
+        {{- end -}}
+    {{- end -}}
+
+    <div style="margin-top: 10px;">
+        <a href="{{- $url -}}" style="padding: 12px;border: solid 1px #6e6e6e;display: flex;text-decoration: none;color: #000000; background-color:#6e6e6e;" onMouseOver="this.style.opacity='0.9'">
+            <div style="flex-shrink: 0;">
+                <img src="{{ with $thumbnail_url }}{{- . -}}{{- else -}}/noimage.png{{- end -}}" alt="" width="100" height="100" style="object-fit: contain;" />
+            </div>
+            <div style="margin-left: 10px;">
+                <h2 style="margin: 0;padding-bottom: 13px;border: none;font-size: 16px;">
+                    {{- $title -}}
+                </h2>
+                <p style="margin: 0;font-size: 13px;word-break: break-word;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;">
+                    {{- $description | plainify | safeHTML -}}
+                </p>
+            </div>
+        </a>
+    </div>
+{{- end -}}

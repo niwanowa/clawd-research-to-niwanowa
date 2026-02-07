@@ -1,0 +1,198 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* iOS Safari対応: 100vwがスクロールバー幅を超える問題を防止 */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Amplify Authenticatorを上下中央揃え + 背景グラデーション */
+[data-amplify-authenticator] {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #1a3a6e, #5ba4d9);
+}
+
+/* Amplify UI カスタム配色（アプリ本体と統一） */
+[data-amplify-authenticator] [data-amplify-router] {
+  border: none;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* プライマリボタン（サインイン、サインアップなど） */
+[data-amplify-authenticator] .amplify-button--primary {
+  background: linear-gradient(to right, #1a3a6e, #5ba4d9);
+  border: none;
+}
+
+[data-amplify-authenticator] .amplify-button--primary:hover {
+  background: linear-gradient(to right, #142d54, #4a93c8);
+}
+
+/* リンク（パスワードを忘れた、アカウント作成など） */
+[data-amplify-authenticator] .amplify-button--link {
+  color: #1a3a6e;
+}
+
+[data-amplify-authenticator] .amplify-button--link:hover {
+  color: #5ba4d9;
+  background: transparent;
+}
+
+/* タブ（サインイン/サインアップ切り替え） */
+[data-amplify-authenticator] .amplify-tabs__item {
+  color: #9ca3af;
+}
+
+[data-amplify-authenticator] .amplify-tabs__item--active {
+  color: #1a3a6e;
+  border-color: #5ba4d9;
+}
+
+[data-amplify-authenticator] .amplify-tabs__item:hover {
+  color: #1a3a6e;
+}
+
+/* フォーカス時のアウトライン */
+[data-amplify-authenticator] input:focus {
+  border-color: #5ba4d9;
+  box-shadow: 0 0 0 2px rgba(91, 164, 217, 0.2);
+}
+
+@theme {
+  --color-kag-blue: #0e0d6a;
+  --color-kag-blue-light: #1a1994;
+  --color-kag-blue-dark: #0a0a4d;
+  --color-kag-cyan: #4ecdc4;
+}
+
+.bg-kag-gradient {
+  background: linear-gradient(to right, #1a3a6e, #5ba4d9);
+}
+
+.btn-kag {
+  background: linear-gradient(to right, #1a3a6e, #5ba4d9);
+  transition: all 0.2s;
+}
+
+.btn-kag:hover {
+  background: linear-gradient(to right, #142d54, #4a93c8);
+}
+
+.btn-kag:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.border-kag-gradient {
+  border-color: #5ba4d9;
+}
+
+.text-kag-gradient {
+  background: linear-gradient(to right, #1a3a6e, #5ba4d9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* MarpのinvertクラスとTailwindの競合を解消 */
+.marpit section.invert {
+  filter: none !important;
+}
+
+/* Marpitコンテナ: overflow制御とブロック表示 */
+.marpit {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* MarpのSVGをレスポンシブ対応（スマホで見切れないように） */
+.marpit svg[data-marpit-svg] {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  /* iOS Safari対応 */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+/* Marpのsectionの固定幅をスケーリングで対応 */
+.marpit svg[data-marpit-svg] foreignObject {
+  overflow: visible;
+}
+
+/* スマホ向け: SVGコンテナのサイズを厳密に制御 */
+@media (max-width: 768px) {
+  .marpit {
+    max-width: 100vw;
+  }
+  .marpit svg[data-marpit-svg] {
+    max-width: calc(100vw - 3rem) !important;
+  }
+}
+
+/* シマーエフェクト（考え中...のローディング表示） */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #6b7280 0%,
+    #6b7280 40%,
+    #9ca3af 50%,
+    #6b7280 60%,
+    #6b7280 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Tailwind CSSリセットを上書きしてMarpの箇条書きを復元 */
+.marpit ul {
+  list-style: disc !important;
+}
+
+.marpit ol {
+  list-style: decimal !important;
+}
+
+/* ネストされたリストのスタイル */
+.marpit ul ul,
+.marpit ol ul {
+  list-style: circle !important;
+}
+
+.marpit ul ul ul,
+.marpit ol ul ul {
+  list-style: square !important;
+}
+
+/* 豆知識のフェードインアニメーション */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

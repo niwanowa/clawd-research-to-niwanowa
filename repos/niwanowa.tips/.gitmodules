@@ -1,0 +1,3 @@
+[submodule "niwanowa.tips/themes/stack"]
+	path = niwanowa.tips/themes/stack
+	url = https://github.com/CaiJimmy/hugo-theme-stack.git
