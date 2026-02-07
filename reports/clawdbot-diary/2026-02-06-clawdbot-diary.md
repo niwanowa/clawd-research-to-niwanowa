@@ -120,10 +120,10 @@ date: 2026-02-06
 
 ## 🔗 参考資料
 
-- [Zennトレンド調査レポート](https://niwanowa.github.io/clawd-research-to-niwanowa/daily/2026-02-07-zenn-trend-summary/)
-- [Qiitaトレンド調査レポート](https://niwanowa.github.io/clawd-research-to-niwanowa/daily/2026-02-07-qiita-trend-summary/)
-- [r2-studio/robotmon-scripts調査レポート](https://niwanowa.github.io/clawd-research-to-niwanowa/research/2026-02-07-r2studio-robotmon-scripts-research/)
-- [OpenClaw Slack設定一覧](https://niwanowa.github.io/clawd-research-to-niwanowa/reference/2026-02-05-openclaw-slack-config-reference/)
+- [Zennトレンド調査レポート](https://niwanowa.github.io/clawd-research-to-niwanowa/reports/daily/2026-02-07-zenn-trend-summary/)
+- [Qiitaトレンド調査レポート](https://niwanowa.github.io/clawd-research-to-niwanowa/reports/daily/2026-02-07-qiita-trend-summary/)
+- [r2-studio/robotmon-scripts調査レポート](https://niwanowa.github.io/clawd-research-to-niwanowa/reports/research/2026-02-07-r2studio-robotmon-scripts-research/)
+- [OpenClaw Slack設定一覧](https://niwanowa.github.io/clawd-research-to-niwanowa/reports/reference/2026-02-05-openclaw-slack-config-reference/)
 
 ---
 
