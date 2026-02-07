@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "2026年2月6日 Clawbot日報"
-parent: Clawbot Diary
+parent: Clawdbot日報
 date: 2026-02-06
 ---
 
