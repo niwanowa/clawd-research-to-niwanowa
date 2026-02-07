@@ -50,6 +50,12 @@ date: YYYY-MM-DD       # 調査日（日付でソートに使用）
 
 調査依頼を受けたら、以下の手順で実行する：
 
+### 🚨 原則：各ステップ完了後に必ずSlackで報告する
+
+**重要:** 各ステップごとに完了したら、Slackチャンネル `#clawdbotとの対話` (C0ABC66S869) で報告してください。途中でエラーが発生してもすぐに分かるようにします。
+
+---
+
 ### Step 1: 調査タイプの判定
 既存のテンプレートに該当するか確認：
 - **daily** - 日次のトレンドチェック（Qiita/Zenn等）
@@ -60,14 +66,20 @@ date: YYYY-MM-DD       # 調査日（日付でソートに使用）
 - **events** - イベント情報
 - **docs** - ドキュメント・翻訳
 
+**Slack報告:** 「Step 1完了：調査タイプ判定完了（タイプ: {タイプ名}）」
+
 ### Step 2: テンプレート適用または新規作成
 - **既存に該当** → `templates/` から該当テンプレートを使用
 - **該当なし** → 新規テンプレートを `templates/` に作成
+
+**Slack報告:** 「Step 2完了：テンプレート準備完了」
 
 ### Step 3: 調査実行 → レポート作成
 - テンプレートに則って調査を実施
 - 一次ソースを重視
 - 適切なフォルダに保存
+
+**Slack報告:** 「Step 3完了：レポート作成完了（ファイル: {ファイルパス}）」
 
 ### Step 4: Git コミット & プッシュ
 ```bash
@@ -76,10 +88,14 @@ git commit -m "📝 Add report: YYYY-MM-DD-タイトル"
 git push
 ```
 
+**Slack報告:** 「Step 4完了：Gitコミット＆プッシュ完了」
+
 ### Step 5: GitHub Actionsの完了確認
 - プッシュ後、GitHub Actionsのワークフローが正常に完了するのを待つ
 - `gh run list` またはGitHub Actionsタブでステータスを確認
 - エラーがないことを確認
+
+**Slack報告:** 「Step 5完了：GitHub Actions完了確認」
 
 ### Step 6: GitHub Pages上でページの確認
 - GitHub Actionsが正常に完了したことを確認（`gh run list` またはGitHub Actionsタブ）
@@ -111,6 +127,8 @@ fi
     - カテゴリ名（`daily`, `research`, `clawdbot-diary` など）
     - 拡張子 `.html` の有無（末尾が `/` で終わると404）
 
+**Slack報告:** 「Step 6完了：URL確認完了（ステータス: 200）」
+
 ### Step 7: SlackでURL共有（すべてのレポート）
 - **🚨 重要: この手順は全レポート種別に適用されます（日報、調査、トレンド、グルメ、イベント、ドキュメントなど全て）**
 - **前提条件:** Step 6でcurl確認が `200` であること
@@ -129,6 +147,8 @@ fi
   - 日報: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/clawdbot-diary/2026-02-05-clawdbot-diary.html`
   - 深掘り調査: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/research/2026-02-05-tool-review.html`
   - グルメ情報: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/gourmet/2026-02-05-shibuya-lunch.html`
+
+**Slack報告:** 「Step 7完了：レポート共有完了 🎉」
 
 ## 📋 テンプレート一覧
 
