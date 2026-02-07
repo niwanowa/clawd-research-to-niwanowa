@@ -82,23 +82,43 @@ git push
 - エラーがないことを確認
 
 ### Step 6: GitHub Pages上でページの確認
-- GitHub Pages（https://niwanowa.github.io/clawd-research-to-niwanowa/）にアクセス
-- 追加したページが正しく表示されることを確認
-- フォーマット、リンク、画像などに問題がないかチェック
-- **重要:** Slackで共有する前に、以下のコマンドでURLが200（成功）であることを確認：
-  ```bash
-  curl -I -s "https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/YYYY-MM-DD-タイトル.html" | head -1
-  ```
+- GitHub Actionsが正常に完了したことを確認（`gh run list` またはGitHub Actionsタブ）
+- **必須:** Slackで共有する前に、以下のコマンドでURLが200（成功）であることを確認：
+
+```bash
+# URL変数（適切に置き換えて実行）
+REPORT_URL="https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/YYYY-MM-DD-タイトル.html"
+
+# 確認コマンド
+STATUS=$(curl -I -s -o /dev/null -w "%{http_code}" "$REPORT_URL")
+echo "HTTP Status: $STATUS"
+
+# 200以外の場合は共有しない
+if [ "$STATUS" != "200" ]; then
+    echo "❌ URLが正しくありません（ステータス: $STATUS）"
+    echo "URL: $REPORT_URL"
+    echo "ファイル名、カテゴリ、拡張子（.html）を確認してください"
+    exit 1
+else
+    echo "✅ URL確認完了（ステータス: 200）"
+fi
+```
+
+- **重要なチェックポイント:**
   - `HTTP/2 200` または `HTTP/1.1 200 OK` と表示されれば成功
-  - `404` や `403` が返ってきた場合、URLやファイル名を確認する
+  - `404` や `403` が返ってきた場合、以下を確認：
+    - ファイル名（ハイフン、スペースなど）
+    - カテゴリ名（`daily`, `research`, `clawdbot-diary` など）
+    - 拡張子 `.html` の有無（末尾が `/` で終わると404）
 
 ### Step 7: SlackでURL共有（日報の場合のみ）
+- **前提条件:** Step 6でcurl確認が `200` であること
+- **200でない場合は絶対に共有しない**
 - 日報の場合、Slackチャンネル `#clawdbotとの対話` (C0ABC66S869) でURLを共有
-- **共有前の最終確認:** Step 6でURLの200確認を完了したこと
 - 共有メッセージ例：「日報を更新しました 📝 {URL}」
 - **正しいURL構造:** `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/YYYY-MM-DD-タイトル.html`
   - `{category}` は `daily`, `research`, `clawdbot-diary` など
-  - **重要:** 末尾は `.html` 拡張子。`/` で終わるURLは404になります！
+  - **末尾は必ず `.html` 拡張子** - `/` で終わるURLや `.md` は404になります！
 - 例:
   - Daily: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/daily/2026-02-05-zenn-trend.html`
   - 日報: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/clawdbot-diary/2026-02-05-clawdbot-diary.html`
