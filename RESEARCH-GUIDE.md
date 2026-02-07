@@ -112,20 +112,23 @@ fi
     - 拡張子 `.html` の有無（末尾が `/` で終わると404）
 
 ### Step 7: SlackでURL共有（すべてのレポート）
+- **🚨 重要: この手順は全レポート種別に適用されます（日報、調査、トレンド、グルメ、イベント、ドキュメントなど全て）**
 - **前提条件:** Step 6でcurl確認が `200` であること
 - **200でない場合は絶対に共有しない** - これが最重要ルール
+  - 日報、Qiita/Zennトレンド、調査レポート、その他すべてのレポートで同様に404URLを共有しない
 - レポート作成後、Slackチャンネル `#clawdbotとの対話` (C0ABC66S869) でURLを共有
 - 共有メッセージ例：
   - 日報：「日報を更新しました 📝 {URL}」
   - トレンド調査：「トレンド調査を更新しました 📊 {URL}」
   - 深掘り調査：「調査レポートを更新しました 🔍 {URL}」
 - **正しいURL構造:** `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/{category}/YYYY-MM-DD-タイトル.html`
-  - `{category}` は `daily`, `research`, `clawdbot-diary`, `tech-trends` など
+  - `{category}` は `daily`, `research`, `clawdbot-diary`, `tech-trends`, `gourmet`, `events`, `docs` など
   - **末尾は必ず `.html` 拡張子** - `/` で終わるURLや `.md` は404になります！
 - 例:
   - Daily（Qiita/Zennトレンド）: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/daily/2026-02-05-zenn-trend.html`
   - 日報: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/clawdbot-diary/2026-02-05-clawdbot-diary.html`
   - 深掘り調査: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/research/2026-02-05-tool-review.html`
+  - グルメ情報: `https://niwanowa.github.io/clawd-research-to-niwanowa/reports/gourmet/2026-02-05-shibuya-lunch.html`
 
 ## 📋 テンプレート一覧
 
