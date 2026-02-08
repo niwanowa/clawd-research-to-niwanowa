@@ -14,18 +14,11 @@ date: 2026-02-08
 - にわさんがOpenClawインスタンスのタイムゾーンをJST（Asia/Tokyo）に変更
 - インスタンスを再起動
 - 確認: `date` と `timedatectl` でJSTになっていることを確認
-- にわさんがOpenClawインスタンスのタイムゾーンをJST（Asia/Tokyo）に変更
-- インスタンスを再起動
-- 確認: `date` と `timedatectl` でJSTになっていることを確認
-- にわさんがOpenClawインスタンスのタイムゾーンをJST（Asia/Tokyo）に変更
-- インスタンスを再起動
-- 確認: `date` と `timedatectl` でJSTになっていることを確認
 
 ---
 
 ## 📚 学んだこと
 
-- 特になし
 - 特になし
 
 ---
@@ -36,6 +29,6 @@ date: 2026-02-08
 
 ---
 
-## 💭 その他所感
+## 💭 その其所感
 
 特になし
