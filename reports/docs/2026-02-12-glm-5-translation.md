@@ -1,150 +1,136 @@
-# GLM-5: From Vibe Coding to Agentic Engineering - 翻訳
+---
+layout: default
+title: "GLM-5 公式ブログ翻訳"
+parent: ドキュメント・翻訳
+date: 2026-02-12
+---
 
-**調査日:** 2026-02-12  
-**元URL:** https://z.ai/blog/glm-5  
-**OpenClawドキュメント:** https://docs.z.ai/devpack/tool/openclaw
+# GLM-5 公式ブログ翻訳
+
+**作成日:** 2026-02-12
+**タイプ:** ドキュメント翻訳
+**元ソース:** [GLM-5: From Vibe Coding to Agentic Engineering](https://z.ai/blog/glm-5)
 
 ---
 
-## 📝 翻訳
+## 📝 概要
 
-### GLM-5: Vibe CodingからAgentic Engineeringへ
-
-私たちは、複雑なシステムエンジニアリングと長期的なエージェントタスクをターゲットとしたGLM-5をリリースしています。スケーリングは、汎用人工知能（AGI）の知能効率を向上させる最も重要な方法の一つです。GLM-4.5と比較して、GLM-5はパラメータ数を355B（アクティブ32B）から744B（アクティブ40B）にスケールし、事前学習データを23Tトークンから28.5Tトークンに増加させました。GLM-5はDeepSeek Sparse Attention（DSA）も統合しており、長文脈絡能力を維持しながらデプロイコストを大幅に削減しています。
-
-強化学習は、事前学習モデルの能力と卓越性のギャップを埋めることを目的としています。しかし、LLMでの大規模展開はRLトレーニングの非効率性が課題となっています。そこで私たちは、トレーニングスループットと効率を大幅に向上させ、より細かい事後学習の反復を可能にする新しい**非同期RLインフラストラクチャ「slime」**を開発しました。事前学習と事後学習の双方の進歩により、GLM-5は広範な学術ベンチマークでGLM-4.7と比較して大幅な改善を達成し、推論、コーディング、エージェントタスクで世界の全オープンソースモデルの中で最高クラスのパフォーマンスを達成し、フロンティアモデルとのギャップを狭めています。
-
-GLM-5は、複雑なシステムエンジニアリングと長期的なエージェントタスク用に設計されています。内部評価スイートCC-Bench-V2で、GLM-5はフロントエンド、バックエンド、長期的なタスクでGLM-4.7を大幅に上回り、Claude Opus 4.5とのギャップを狭めています。
-
-**Vending Bench 2**（長期運用能力を測定するベンチマーク）で、GLM-5はオープンソースモデルで#1にランキングしました。Vending Bench 2はモデルに1年間の期間でシミュレーションされた自動販売機ビジネスを運営することを要求し、GLM-5は$4,432の最終残高で完了し、Claude Opus 4.5に接近し、強力な長期計画とリソース管理を実証しています。
-
-GLM-5は**Hugging Face**と**ModelScope**でオープンソース化されており、モデル重みはMITライセンスで公開されています。GLM-5は開発者プラットフォーム**api.z.ai**と**BigModel.cn**でも利用可能で、Claude CodeとOpenClawとの互換性があります。**Z.ai**で無料で試すこともできます。
+Z.aiによるGLM-5の公式ブログ記事の日本語翻訳。GLM-5は複雑なシステムエンジニアリングと長期にわたるエージェントタスクを対象とした大規模言語モデルで、GLM-4.5から大幅なスケールアップと性能向上が図られています。
 
 ---
 
-## 🎯 注目ポイント：Use GLM-5 with OpenClaw
+## 📄 内容
 
-### セクション原文
+# GLM-5: Vibe Coding から Agentic Engineering へ
 
-> **Use GLM-5 with OpenClaw**
-> Beyond coding agents, GLM-5 also supports *OpenClaw*—a framework that turns GLM-5 into a personal assistant that can *operate across apps and devices*, not just chat.
-> OpenClaw is included in GLM Coding Plan. See [guidance](https://docs.z.ai/devpack/tool/openclaw).
+GLM-5をリリースします。これは複雑なシステムエンジニアリングと長期にわたるエージェントタスクを対象としています。スケーリングは、人工汎用知能（AGI）の知能効率を向上させるための最も重要な方法の1つであり続けています。GLM-4.5と比較して、GLM-5は3,550億パラメータ（有効320億）から7,440億パラメータ（有効400億）へとスケールアップし、事前学習データを23Tから28.5Tトークンに拡張しました。GLM-5はまたDeepSeek Sparse Attention（DSA）を統合し、長いコンテキスト容量を維持しながら、デプロイコストを大幅に削減しました。
 
-### 翻訳
+強化学習は、事前学習済みモデルの能力と卓越性のギャップを埋めることを目的としています。しかし、LLMでの大規模なデプロイは、RL学習の非効率性が原因で課題となっています。そこで私たちは、トレーニングスループットと効率を大幅に向上させ、よりきめ細かい学習後の反復処理を可能にする、新しい**非同期RLインフラストラクチャ**「slime」を開発しました。事前学習と学習後処理の双方の進歩により、GLM-5は広範な学術ベンチマークでGLM-4.7と比較して大幅な改善を達成し、推論、コーディング、エージェントタスクにおいて世界中のすべてのオープンソースモデルの中で最高のパフォーマンスを発揮し、フロンティアモデルとのギャップを縮めました。
 
-> **GLM-5 with OpenClawの使用**
-> コーディングエージェントを超えて、GLM-5は**OpenClaw**もサポートしています。これは、GLM-5を単なるチャットだけでなく、**アプリとデバイス間で動作できるパーソナルアシスタント**に変えるフレームワークです。
-> OpenClawはGLM Coding Planに含まれています。[ガイダンス](https://docs.z.ai/devpack/tool/openclaw)を参照してください。
+GLM-5は、複雑なシステムエンジニアリングと長期にわたるエージェントタスクのために設計されています。社内評価スイートCC-Bench-V2では、GLM-5はフロントエンド、バックエンド、長期タスクのすべてでGLM-4.7を大幅に上回り、Claude Opus 4.5との差を縮めました。
 
----
+長期的な運用能力を測定するベンチマークである「Vending Bench 2」では、GLM-5はオープンソースモデルの中で第1位にランクインしました。Vending Bench 2は、1年間の視点で自動販売機ビジネスをシミュレーション実行するモデルを必要とします。GLM-5は最終的な口座残高$4,432で終了し、Claude Opus 4.5に迫り、強力な長期的計画とリソース管理能力を実証しました。
 
-## 📋 OpenClawドキュメントまとめ
-
-### 概要
-
-OpenClawは、自分のデバイスで実行し、様々なメッセージングプラットフォームに接続するパーソナルAIアシスタントです。Z.AIのGLMモデルをZ.AI Coding Plan経由で設定して使用できます。
-
-### インストールと設定手順
-
-1. **APIキーの取得** - Z.AIのAPIキーを取得
-2. **OpenClawのインストール** - Node.js 22以降が必要
-   - macOS/Linux: `curl -fsSL https://openclaw.ai/install.sh | bash`
-   - Windows (PowerShell): `iwr -useb https://openclaw.ai/install.ps1 | iex`
-3. **OpenClawのセットアップ** - `openclaw onboard --install-daemon`
-4. **Z.AIプロバイダーの設定** - APIキーを入力
-5. **セットアップの完了** - 残りの設定を続行
-6. **ボットとの対話** - Terminal UIでチャット開始
-7. **インストール後の検証** - `openclaw doctor`、`openclaw status`、`openclaw dashboard`
-
-### 高度な設定
-
-#### Model Failover（モデルフェイルオーバー）
-信頼性を確保するためのモデルフェイルオーバーを設定：
-
-```json
-{
-  "agents": {
-    "defaults": {
-      "model": {
-        "primary": "zai/glm-4.7",
-        "fallbacks": ["zai/glm-4.7-flash"]
-      }
-    }
-  }
-}
-```
-
-#### ClawHubでスキルを追加
-スキルはSKILL.mdファイルを含むフォルダです。新しい機能を追加したい場合、**ClawHub**（https://clawhub.ai/）が最も簡単です。
-
-- インストール: `npm i -g clawhub`
-- スキル検索: `clawhub search "postgres backups"`
-- スキルダウンロード: `clawhub install my-skill-pack`
-- スキル更新: `clawhub update --all`
-
-#### プラグイン
-プラグインはOpenClawを追加機能（コマンド、ツール、Gateway RPC）で拡張する小さなコードモジュールです。
-
-- プラグイン一覧: `openclaw plugins list`
-- プラグインインストール（例: Voice Call）: `openclaw plugins install @openclaw/voice-call`
-- Gateway再起動: `openclaw gateway restart`
-
-### トラブルシューティング
-
-#### 一般的な問題
-- **APIキー認証** - キーが正しいか確認
-- **モデル利用可能性** - プランでモデルが利用可能か確認
-- **接続問題** - ネットワーク設定を確認
-
-### リソース
-
-- **OpenClawドキュメント:** https://docs.openclaw.ai
-- **OpenClaw GitHub:** https://github.com/openclaw/openclaw
-- **Z.AI Developer Docs:** https://docs.z.ai
-- **コミュニティスキル:** https://github.com/awesome-openclaw-skills
+GLM-5はHugging FaceとModelScopeでオープンソース化されており、モデルの重みはMITライセンスの下でリリースされています。GLM-5は開発者プラットフォームのapi.z.aiとBigModel.cnでも利用可能であり、Claude CodeとOpenClawとの互換性があります。Z.aiで無料で試すこともできます。
 
 ---
 
-## 🔍 まとめ
+## ベンチマーク比較表
 
-### GLM-5の特徴
+| ベンチマーク | GLM-5 (Thinking) | GLM-4.7 (Thinking) | DeepSeek-V3.2 (Thinking) | Kimi K2.5 (Thinking) | Claude Opus 4.5 (Extend Thinking) | Gemini 3.0 Pro (High Thinking Level) | GPT-5.2 (xhigh) |
+|-------------|------------------|---------------------|--------------------------|----------------------|-----------------------------------|--------------------------------------|-----------------|
+| **推論** | | | | | | | |
+| Humanity's Last Exam | 30.5 | 24.8 | 25.1 | 31.5 | 28.4 | 37.2 | 35.4 |
+| Humanity's Last Exam w/ Tools | 50.4 | 42.8 | 40.8 | 51.8 | 43.4* | 45.8* | 45.5* |
+| AIME 2026 I | 92.7 | 92.9 | 92.7 | 92.5 | 93.3 | 90.6 | - |
+| HMMT Nov. 2025 | 96.9 | 93.5 | 90.2 | 91.1 | 91.7 | 93.0 | 97.1 |
+| IMOAnswerBench | 82.5 | 82.0 | 78.3 | 81.8 | 78.5 | 83.3 | 86.3 |
+| GPQA-Diamond | 86.0 | 85.7 | 82.4 | 87.6 | 87.0 | 91.9 | 92.4 |
+| **コーディング** | | | | | | | |
+| SWE-bench Verified | 77.8 | 73.8 | 73.1 | 76.8 | 80.9 | 76.2 | 80.0 |
+| SWE-bench Multilingual | 73.3 | 66.7 | 70.2 | 73.0 | 77.5 | 65.0 | 72.0 |
+| Terminal-Bench 2.0 Terminus-2 | 56.2 / 60.7† | 41.0 | 39.3 | 50.8 | 59.3 | 54.2 | 54.0 |
+| Terminal-Bench 2.0 Claude Code | 56.2 / 61.1† | 32.8 | 46.4 | - | 57.9 | - | - |
+| CyberGym | 43.2 | 23.5 | 17.3 | 41.3 | 50.6 | 39.9 | - |
+| **汎用エージェント** | | | | | | | |
+| BrowseComp | 62.0 | 52.0 | 51.4 | 60.6 | 37.0 | 37.8 | - |
+| BrowseComp w/ Context Manage | 75.9 | 67.5 | 67.6 | 74.9 | 67.8 | 59.2 | 65.8 |
+| BrowseComp-Zh | 72.7 | 66.6 | 65.0 | 62.3 | 62.4 | 66.8 | 76.1 |
+| τ²-Bench | 89.7 | 87.4 | 85.3 | 80.2 | 91.6 | 90.7 | 85.5 |
+| MCP-Atlas Public Set | 67.8 | 52.0 | 62.2 | 63.8 | 65.2 | 66.6 | 68.0 |
+| Tool-Decathlon | 38.0 | 23.8 | 35.2 | 27.8 | 43.5 | 36.4 | 46.3 |
+| Vending Bench 2 | $4,432.12 | $2,376.82 | $1,034.00 | $1,198.46 | $4,967.06 | $5,478.16 | $3,591.33 |
 
-1. **巨大なスケールアップ**
-   - パラメータ数: 355B（アクティブ32B）→744B（アクティブ40B）
-   - 事前学習データ: 23T→28.5Tトークン
-
-2. **強化学習の効率化**
-   - 新しい非同期RLインフラ「slime」でトレーニング効率を大幅向上
-   - より細かい事後学習の反復を可能に
-
-3. **ベンチマークでの優位性**
-   - 推論: Humanity's Last Exam 30.5点
-   - コーディング: SWE-bench Verified 77.8点
-   - エージェント: Vending Bench 2でオープンソース#1（$4,432残高）
-
-### OpenClawとの統合
-
-| 特徴 | 説明 |
-|------|--------|
-| **パーソナルアシスタント化** | GLM-5を単なるチャットから、アプリとデバイス間で動作するアシスタントに変換 |
-| **GLM Coding Plan対応** - GLM Coding Planに含まれ、設定ガイド提供 |
-| **拡張性** | ClawHubでスキル、プラグインで機能追加可能 |
-| **マルチチャンネル** | Web UI、Discord、Slackなど複数のチャンネルに対応 |
-
-### 利用方法
-
-1. **GLM Coding Planのサブスクライブが必要** - Maxプランユーザーは即時利用可能、他プランは順次展開
-2. **APIキーの設定** - Z.AIからAPIキーを取得してOpenClawに設定
-3. **スキル/プラグインの追加** - ClawHubから必要な機能を追加
-4. **対話開始** - Terminal UIや各種チャンネルからGLM-5を活用
+*注: はフルセットのスコアを指します。<br>
+†注: は一部のあいまいな指示を修正したTerminal-Bench 2.0の検証済みバージョンです。<br>
+詳細は脚注を参照してください。
 
 ---
 
-## 📎 関連リンク
+# Office
 
-- [GLM-5 Blog](https://z.ai/blog/glm-5)
-- [OpenClaw Documentation](https://docs.openclaw.ai)
-- [OpenClaw on Z.AI](https://docs.z.ai/devpack/tool/openclaw)
-- [ClawHub](https://clawhub.ai)
-- [GitHub: zai-org/GLM-5](https://github.com/zai-org/GLM-5)
-- [HuggingFace: GLM-5](https://huggingface.co/zai-org/GLM-5)
+基礎モデルは「チャット」から「仕事」へと移行しています。これは、知識ワーカーのためのOfficeツールや、エンジニアのためのプログラミングツールに似ています。
+
+GLM-4.5は推論、コーディング、エージェントのための最初のステップであり、モデルが複雑なタスクを完了できるようにしました。GLM-5では、さらに複雑なシステムエンジニアリングと長期的なエージェント能力を強化しました。GLM-5はテキストやソース資料を直接.docx、.pdf、.xlsxファイル（PRD、授業計画、試験、スプレッドシート、財務報告書、ランシート、メニューなど）に変換でき、使用可能なドキュメントとしてエンドツーエンドで提供します。
+
+公式アプリケーションのZ.aiでは、PDF / Word / Excel作成のスキルを備えたエージェントモードを展開しており、マルチターンコラボレーションをサポートし、出力を実際の成果物に変換します。
+
+---
+
+## GLM-5の始め方
+
+### GLM Coding PlanでGLM-5を使用する
+
+お気に入りのコーディングエージェント（Claude Code、OpenCode、Kilo Code、Roo Code、Cline、Droidなど）でGLM-5を試してみてください。
+
+**GLM Coding Planの加入者の場合:** 計算容量が限られているため、Coding PlanユーザーにGLM-5を段階的に展開しています。
+
+- **Maxプランユーザー:** モデル名を「GLM-5」に更新することで、今すぐGLM-5を有効にできます（例：Claude Codeの場合は~/.claude/settings.json）
+- **その他のプラン階層:** 展開が拡大するにつれて、順次サポートが追加されます。
+- **クォータの注意:** GLM-5へのリクエストはGLM-4.7よりも多くのプランクォータを消費します。
+
+GUIをお好みですか？ 複雑なタスクを連携させるために、複数のエージェントを制御（リモート制御も含む）できるエージェンティブ開発環境**Z Code**を提供しています。
+
+**今すぐビルドを開始:** https://z.ai/subscribe
+
+### OpenClawでGLM-5を使用する
+
+コーディングエージェントだけでなく、GLM-5は**OpenClaw**もサポートしています。これはGLM-5をチャットだけでなく、アプリやデバイス全体で操作できる**パーソナルアシスタント**に変えるフレームワークです。
+
+OpenClawはGLM Coding Planに含まれています。ガイダンスを参照してください。
+
+### Z.aiでGLM-5とチャットする
+
+GLM-5はZ.aiを通じてアクセスできます。システムが自動で行わない場合は、手動でモデルオプションを「GLM-5」に変更してください。GLM-5にはチャットモードとエージェントモードの両方を提供しています：
+
+- **チャットモード:** 即時応答、インタラクティブチャット、軽量な提供
+- **エージェントモード:** 複数のツール、多様なスキル、結果を直接提供
+
+### GLM-5をローカルで実行する
+
+GLM-5のモデルの重みはHuggingFaceとModelScopeで公開されています。ローカルデプロイの場合、GLM-5はvLLMとSGLangを含む推論フレームワークをサポートしています。包括的なデプロイ手順は公式のGitHubリポジトリで入手できます。
+
+また、Huawei Ascend、Moore Threads、Cambricon、Kunlun Chip、MetaX、Enflame、Hygonを含むNVIDIA以外のチップでのGLM-5のデプロイもサポートしています。カーネル最適化とモデル量子化を通じて、GLM-5はそれらのチップで合理的なスループットを達成できます。
+
+---
+
+## 脚注
+
+- **Humanity's Last Exam (HLE) & その他の推論タスク:** 最大生成長131,072トークン（temperature=1.0, top_p=0.95, max_new_tokens=131072）で評価します。デフォルトではテキストのみのサブセットを報告します。*が付いている結果はフルセットからのものです。GPT-5.2 (medium)をジャッジモデルとして使用します。HLE-with-toolsの場合、最大コンテキスト長202,752トークンを使用します。
+- **SWE-bench & SWE-bench Multilingual:** カスタマイズされた指示プロンプトでOpenHandsを使用してSWE-benchスイートを実行します。設定：temperature=0.7, top_p=0.95, max_new_tokens=16384、200Kコンテキストウィンドウ。
+- **BrowserComp:** コンテキスト管理なしの場合、最近の5ターンの詳細を保持します。コンテキスト管理ありの場合、DeepSeek-V3.2とKimi K2.5と同じ「すべて破棄」戦略を使用します。
+- **Terminal-Bench 2.0 (Terminus 2):** Terminusフレームワークでtimeout=2h, temperature=0.7, top_p=1.0, max_new_tokens=8192、128Kコンテキストウィンドウで評価します。リソース制限は16 CPUと32 GB RAMに制限されています。
+- **Terminal-Bench 2.0 (Claude Code):** Claude Code 2.1.14（シンクモード）でtemperature=1.0, top_p=0.95, max_new_tokens=65536で評価します。経過時間制限を削除しつつ、タスクごとのCPUとメモリ制約を維持します。Claude Codeによって導入された環境問題を修正し、あいまいな指示を解決した検証済みのTerminal-Bench 2.0データセットでも結果を報告します。スコアは5回の実行の平均です。
+- **CyberGym:** Claude Code 2.1.18（シンクモード、Webツールなし）で（temperature=1.0, top_p=1.0, max_new_tokens=32000）で評価し、タスクごとに250分のタイムアウトを使用します。結果は1,507タスクに対する単一実行のPass@1です。
+- **MCP-Atlas:** すべてのモデルは500タスクの公開サブセットでシンクモードで評価され、タスクごとに10分のタイムアウトを使用します。Gemini 3 Proをジャッジモデルとして使用します。
+- **τ²-bench:** RetailとTelecomで早期のユーザー終了による失敗を避けるために、小さなプロンプト調整を追加します。Airlineの場合、Claude Opus 4.5のシステムカードで提案されたドメイン修正を適用します。
+- **Vending Bench 2:** 実行はAndon Labsによって独立して行われます。
+
+---
+
+## 📎 参考リンク
+
+- [元ドキュメント: GLM-5: From Vibe Coding to Agentic Engineering](https://z.ai/blog/glm-5)
+- [Hugging Face - GLM-5](https://huggingface.co/zai-org/GLM-5)
+- [GitHub - GLM-5](https://github.com/zai-org/GLM-5)
+- [Z.ai](https://z.ai)
